@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ITSCHOOL — Educación STEAM & Robótica</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -30,16 +31,18 @@
   <section class="hero" id="home">
     <div class="container hero-inner">
       <div class="hero-text">
-        <h1><span class="gradient">Construyendo</span><br>el Futuro Digital</h1>
-        <p>Nutriendo la imaginación de nuestros estudiantes para el futuro con Robótica, Diseño y STEAM</p>
+        <h1><span class="gradient">¡Construye Robots!</span><br>¡Imagina, crea y programa!</h1>
+        <p> Nutrimos la curiosidad de niños y jóvenes con robótica divertida y proyectos innovadores que inspiran el mañana.</p>
         <div class="hero-tags">
-          <span class="tag"></span> Programación <span class="tag"></span>
-          <span class="tag">|</span> Robótica <span class="tag"></span>
-          <span class="tag">|</span> Automatización <span class="tag"></span>
+          <span class="tag">Robótica</span>
+          <span class="tag">|</span>
+          <span class="tag">Programación</span>
+          <span class="tag">|</span>
+          <span class="tag">STEAM</span>
         </div>
         <div class="hero-cta">
-          <a href="#cursos" class="btn primary">Explorar Cursos</a>
-          <a href="#quienes" class="btn ghost">Conoce Más</a>
+          <a href="#cursos" class="btn primary">¡Explora Ahora!</a>
+          <a href="#quienes" class="btn ghost">Descubre Más</a>
         </div>
       </div>
     </div>
@@ -69,35 +72,43 @@
           <p>Diversión en el aprendizaje</p>
         </div>
       </div>
-      <div class="carousel-section">
-  <h2 class="gradient">Nuestros Talleres</h2>
-  <div class="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-slide active">
-        <img src="img/Carrusel1.jpg" alt="Cursos y Actividades">
+      <div class="gallery-wrapper">
+        <div class="carousel-section">
+          <div class="carousel">
+            <button class="carousel-arrow prev">‹</button>
+            <button class="carousel-arrow next">›</button>
+            <div class="carousel-inner">
+              <div class="carousel-slide active">
+                <img src="img/Carrusel1.jpg" alt="Cursos y Actividades">
+              </div>
+              <div class="carousel-slide">
+                <img src="img/Carrusel2.jpg" alt="Niños Aprendiendo">
+              </div>
+              <div class="carousel-slide">
+                <img src="img/Carrusel3.jpg" alt="Niños Aprendiendo">
+              </div>
+              <div class="carousel-slide">
+                <img src="img/Carrusel4.jpg" alt="Instructores">
+              </div>
+              <div class="carousel-slide">
+                <img src="img/Carrusel5.jpg" alt="Alcance">
+              </div>
+            </div>
+            <div class="carousel-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+        <div class="workshop-text">
+          <h3 class="gradient">Nuestros Talleres</h3>
+          <p>En ITSCHOOL, nuestros talleres son espacios llenos de creatividad y diversión donde los niños aprenden robótica y STEAM de manera práctica. Trabajamos con metodologías activas, proyectos colaborativos y herramientas innovadoras para fomentar el pensamiento crítico y la resolución de problemas. Cada sesión es una aventura que combina juego y tecnología, asegurando que cada estudiante salga inspirado y listo para crear su propio futuro digital.</p>
+          <a href="#cursos" class="btn primary no-shine">Únete a un Taller</a>
+        </div>
       </div>
-      <div class="carousel-slide">
-        <img src="img/Carrusel2.jpg" alt="Niños Aprendiendo">
-      </div>
-      <div class="carousel-slide">
-        <img src="img/Carrusel3.jpg" alt="Niños Aprendiendo">
-      </div>
-      <div class="carousel-slide">
-        <img src="img/Carrusel4.jpg" alt="Instructores">
-      </div>
-      <div class="carousel-slide">
-        <img src="img/Carrusel5.jpg" alt="Alcance">
-      </div>
-    </div>
-    <div class="carousel-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-    </div>
-    </div>
     </div>
   </section>
 
@@ -164,6 +175,19 @@
     </div>
   </section>
 
+  <!-- CONVENIOS -->
+  <section class="section partners-section">
+    <div class="container">
+      <h2 class="gradient">Nuestros Convenios</h2>
+      <p class="lead">Colaboramos con instituciones líderes para enriquecer la educación de nuestros estudiantes.</p>
+      <div class="logos-grid">
+        <img src="img/safa-removebg-preview.png" alt="Convenio 1" class="partner-logo">
+        <img src="img/inidoamerica-removebg.png" alt="Convenio 2" class="partner-logo">
+        <img src="img/pucesa-removebg.png" alt="Convenio 3" class="partner-logo">
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO / FOOTER -->
   <footer class="site-footer" id="contacto">
     <div class="container footer-inner">
@@ -180,9 +204,9 @@
         <div class="footer-right">
           <div class="contact-info">
             <h4>Contacto</h4>
-            <p><strong>📍</strong> Av. Tecnológica 123, Col. Innovación, Ciudad, CP 12345</p>
-            <p><strong>📞</strong> +52 (55) 1234-5678</p>
-            <p><strong>✉️</strong> info@itschool.mx</p>
+            <p><strong>📍</strong> <a href="https://maps.app.goo.gl/8x2DQmpLXivjotXP6?g_st=ipc" target="_blank">Calle Mexico y Chile, Ambato, Ecuador</a></p>
+            <p><strong>📞</strong> +593 983491300 / +593 999895126</p>
+            <p><strong>✉️</strong> 2025.school.it@gmail.com</p>
           </div>
           <div class="hours">
             <h4>Horarios</h4>
@@ -198,6 +222,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/593983491300" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <img src="img/whatsapp-icon.jpg" alt="Chatea en WhatsApp" /> <!-- Asume que tienes el icono; si no, usa texto: <span>💬</span> -->
+  </a>
 
   <!-- MODAL -->
   <div class="modal" id="courseModal">

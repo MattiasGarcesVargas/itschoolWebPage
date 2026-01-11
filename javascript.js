@@ -63,25 +63,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Animaciones de entrada para secciones al scroll
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  // Animaciones de entrada para secciones al scroll con efectos variados
+  const observerOptions = { 
+    threshold: 0.15, 
+    rootMargin: '0px 0px -100px 0px' 
+  };
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('show');
+        // Una vez mostrado, dejar de observar para mejor rendimiento
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  document.querySelectorAll('.section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
+  // Animar sección "Quiénes Somos" - título y lead desde arriba
+  const quienesSection = document.querySelector('.quienes-section');
+  if (quienesSection) {
+    const title = quienesSection.querySelector('h2');
+    const lead = quienesSection.querySelector('.lead');
+    if (title) {
+      title.classList.add('animate-up');
+      observer.observe(title);
+    }
+    if (lead) {
+      lead.classList.add('animate-up', 'delay-200');
+      observer.observe(lead);
+    }
+  }
+
+  // Animar value cards - alternando izquierda y derecha
+  document.querySelectorAll('.value-card').forEach((card, index) => {
+    if (index % 2 === 0) {
+      card.classList.add('animate-left', `delay-${(index % 3) * 100 + 100}`);
+    } else {
+      card.classList.add('animate-right', `delay-${(index % 3) * 100 + 100}`);
+    }
+    observer.observe(card);
   });
 
-  // Efecto de partículas futuristas en hero (simple canvas)
+  // Animar galería - carrusel desde izquierda, texto desde derecha
+  const carouselSection = document.querySelector('.carousel-section');
+  const workshopText = document.querySelector('.workshop-text');
+  if (carouselSection) {
+    carouselSection.classList.add('animate-left');
+    observer.observe(carouselSection);
+  }
+  if (workshopText) {
+    workshopText.classList.add('animate-right', 'delay-200');
+    observer.observe(workshopText);
+  }
+
+  // Animar sección de cursos
+  const cursosSection = document.querySelector('.cursos-section');
+  if (cursosSection) {
+    const title = cursosSection.querySelector('h2');
+    const lead = cursosSection.querySelector('.lead');
+    if (title) {
+      title.classList.add('animate-zoom');
+      observer.observe(title);
+    }
+    if (lead) {
+      lead.classList.add('animate-fade', 'delay-200');
+      observer.observe(lead);
+    }
+  }
+
+  // Animar course cards - efecto zoom escalonado
+  document.querySelectorAll('.course-card').forEach((card, index) => {
+    card.classList.add('animate-zoom', `delay-${index * 100 + 100}`);
+    observer.observe(card);
+  });
+
+  // Animar sección de instructores
+  const instructoresSection = document.querySelector('.instructores-section');
+  if (instructoresSection) {
+    const title = instructoresSection.querySelector('h2');
+    const lead = instructoresSection.querySelector('.lead');
+    if (title) {
+      title.classList.add('animate-up');
+      observer.observe(title);
+    }
+    if (lead) {
+      lead.classList.add('animate-fade', 'delay-200');
+      observer.observe(lead);
+    }
+  }
+
+  // Animar instructor cards - alternando desde los lados
+  document.querySelectorAll('.instructor-card').forEach((card, index) => {
+    if (index % 2 === 0) {
+      card.classList.add('animate-left', `delay-${index * 150}`);
+    } else {
+      card.classList.add('animate-right', `delay-${index * 150}`);
+    }
+    observer.observe(card);
+  });
+
+  // Animar sección de convenios
+  const partnersSection = document.querySelector('.partners-section');
+  if (partnersSection) {
+    const title = partnersSection.querySelector('h2');
+    const lead = partnersSection.querySelector('.lead');
+    if (title) {
+      title.classList.add('animate-up');
+      observer.observe(title);
+    }
+    if (lead) {
+      lead.classList.add('animate-fade', 'delay-100');
+      observer.observe(lead);
+    }
+  }
+
+  // Animar logos de convenios - efecto zoom escalonado
+  document.querySelectorAll('.partner-logo').forEach((logo, index) => {
+    logo.classList.add('animate-zoom', `delay-${index * 100}`);
+    observer.observe(logo);
+  });
+
+  // Efecto de partículas futuristas en hero (simple canvas) - Mantenido para innovación
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;';
   document.querySelector('.hero').appendChild(canvas);
@@ -121,36 +223,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   animateParticles();
 });
-  // Carrusel funcional
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.dot');
-  const carouselInner = document.querySelector('.carousel-inner');
-  let currentIndex = 0;
+// Carrusel funcional - Mantenido igual
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+const carouselInner = document.querySelector('.carousel-inner');
+const prevArrow = document.querySelector('.carousel-arrow.prev');
+const nextArrow = document.querySelector('.carousel-arrow.next');
+let currentIndex = 0;
+let autoplayInterval;
 
-  function updateCarousel(index) {
-    // Mover el carrusel
-    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+function updateCarousel(index) {
+  // Mover el carrusel
+  carouselInner.style.transform = `translateX(-${index * 100}%)`;
 
-    // Actualizar estados activos
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-
-    currentIndex = index;
-  }
-
-  // Evento en los dots
+  // Actualizar estados activos
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
   dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      updateCarousel(i);
-    });
+    dot.classList.toggle('active', i === index);
   });
 
-  // (Opcional) autoplay cada 5s
-  setInterval(() => {
-    let nextIndex = (currentIndex + 1) % slides.length;
-    updateCarousel(nextIndex);
-  }, 5000);
+  currentIndex = index;
+}
+
+function nextSlide() {
+  let nextIndex = (currentIndex + 1) % slides.length;
+  updateCarousel(nextIndex);
+}
+
+function prevSlide() {
+  let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel(prevIndex);
+}
+
+// Los dots ahora solo son indicadores visuales, no clickeables
+// Se actualizan automáticamente pero no tienen eventos de click
+
+// Eventos para las flechas
+if (prevArrow) {
+  prevArrow.addEventListener('click', () => {
+    prevSlide();
+    resetAutoplay();
+  });
+}
+
+if (nextArrow) {
+  nextArrow.addEventListener('click', () => {
+    nextSlide();
+    resetAutoplay();
+  });
+}
+
+// Función para reiniciar el autoplay
+function resetAutoplay() {
+  clearInterval(autoplayInterval);
+  startAutoplay();
+}
+
+// Iniciar autoplay con 7 segundos
+function startAutoplay() {
+  autoplayInterval = setInterval(() => {
+    nextSlide();
+  }, 7000); // 7 segundos
+}
+
+startAutoplay();
